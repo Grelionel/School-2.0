@@ -1,0 +1,12 @@
+<div class="wrapper" [class.sidebar_minimize]="isSidebarMinimized">
+  <app-side-bar (toggleSidebarEvent)="handleSidebarToggle($event)" />
+  <div class="main-panel">
+    <app-navbar />
+    <div class="container">
+      <div class="page-inner">
+        <router-outlet />
+      </div>
+    </div>
+    <app-footer />
+  </div>
+</div>

@@ -1,0 +1,85 @@
+<div
+  class="sidebar sidebar-style-2 ydd-sidebar"
+  data-background-color="dark"
+  (mouseenter)="addHoverSidebar()"
+  (mouseleave)="removeHoverSidebar()"
+>
+  <div class="sidebar-logo" #header>
+    <div class="logo-header" data-background-color="dark">
+      <div class="logo w-75 pt-3 pb-3">
+        <img
+          src="assets/images/logo/logo2.png"
+          alt="Logo"
+          class="navbar-brand h-100"
+        />
+      </div>
+      <div class="nav-toggle">
+        <button
+          class="btn btn-toggle toggle-sidebar"
+          #toggleSidebarButton
+          (click)="toggleSidebar()"
+        >
+          <i class="fa fa-list" #icon></i>
+        </button>
+        <button class="btn btn-toggle sidenav-toggler">
+          <i class="gg-menu-left"></i>
+        </button>
+      </div>
+      <button class="topbar-toggler more">
+        <i class="gg-more-vertical-alt"></i>
+      </button>
+    </div>
+  </div>
+  <div class="sidebar-wrapper scrollbar scrollbar-inner">
+    <div class="space-small"></div>
+    <div class="sidebar-content">
+      <div class="close">
+        <i class="fas fa-x mb-3" (onClick)="closeSidebar()"></i>
+      </div>
+      <ul class="nav nav-secondary" #menuList>
+        @for (menuItem of menuItems; track $index) { @if (menuItem.section) {
+        <li class="nav-section mt-4 mb-4">
+          <span class="sidebar-mini-icon">
+            <i class="fa fa-ellipsis-h"></i>
+          </span>
+          <h4 class="text-section">{{ menuItem.section }}</h4>
+        </li>
+        } @if (menuItem.items) {
+        <li class="nav-item" [class.active]="isMenuActive(menuItem)">
+          <a
+            class="nav-link collapsed"
+            data-bs-toggle="collapse"
+            [attr.href]="'#collapseMenu' + $index"
+            [attr.aria-expanded]="'false'"
+            [attr.aria-controls]="'collapseMenu' + $index"
+          >
+            <i [class]="menuItem.icon"></i>
+            <p>{{ menuItem.name }}</p>
+            <span class="caret"></span>
+          </a>
+          <div class="collapse" [id]="'collapseMenu' + $index">
+            <ul class="nav nav-collapse">
+              @for (item of menuItem.items; track $index) {
+              <li routerLinkActive="active" [routerLink]="item.route">
+                <a>
+                  <span class="sub-item">{{ item.name }}</span>
+                </a>
+              </li>
+              }
+            </ul>
+          </div>
+        </li>
+        } @if (menuItem.route && !menuItem.items) {
+        <li class="nav-item" [class.active]="isMenuActive(menuItem)">
+          <a [routerLink]="menuItem.route" routerLinkActive="active">
+            <i [class]="menuItem.icon"></i>
+            <p>{{ menuItem.name }}</p>
+            <span *ngIf="menuItem.badge" class="badge badge-secondary"></span>
+          </a>
+        </li>
+        }}
+        <hr />
+      </ul>
+    </div>
+  </div>
+</div>

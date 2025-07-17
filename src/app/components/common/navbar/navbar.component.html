@@ -1,0 +1,90 @@
+<div class="top-navbar flex-between gap-16">
+  <div class="flex-align gap-16">
+    <button
+      type="button"
+      class="toggle-btn d-xl-none d-flex text-26 text-gray-500"
+    >
+      <i class="ph ph-list"></i>
+    </button>
+  </div>
+  <div class="flex-align gap-16">
+    <div class="flex-align gap-8">
+      <div class="dropdown">
+        <button
+          class="dropdown-btn shaking-animation text-gray-500 w-40 h-40 bg-main-50 hover-bg-main-100 transition-2 rounded-circle text-xl flex-center"
+          type="button"
+          (click)="toggleNotification($event)"
+        >
+          <span class="position-relative">
+            <i class="ph ph-bell"></i>
+            <span class="alarm-notify position-absolute end-0"></span>
+          </span>
+        </button>
+      </div>
+    </div>
+    <div class="dropdown">
+      <button
+        class="users arrow-down-icon border border-gray-200 rounded-pill p-4 d-inline-block pe-40 position-relative"
+        type="button"
+        (click)="toggleOption($event)"
+      >
+        <span class="position-relative">
+          <img
+            src="assets/images/thumbs/user-img.png"
+            alt="Image"
+            class="h-32 w-32 rounded-circle"
+          />
+          <span
+            class="activation-badge w-8 h-8 position-absolute inset-block-end-0 inset-inline-end-0"
+          ></span>
+        </span>
+      </button>
+    </div>
+  </div>
+</div>
+
+<p-overlayPanel #option>
+  <ng-template pTemplate>
+    <div class="flex flex-col gap-4">
+      <div>
+        <ul class="list-none m-0 flex flex-col">
+          @for (option of options; track $index) {
+          <li
+            class="flex items-center gap-2 px-2 py-3 hover:bg-gray-100 cursor-pointer rounded-border"
+            (onClick)="toggleOption(option)"
+          >
+            <div>
+              <span class="font-medium">{{ option.title }}</span>
+            </div>
+          </li>
+          <hr />
+          }
+        </ul>
+      </div>
+    </div>
+  </ng-template>
+</p-overlayPanel>
+
+<p-overlayPanel #notification>
+  <ng-template pTemplate>
+    <div class="flex flex-col gap-4">
+      <div>
+        <span class="font-medium block mb-2">Notifications</span>
+        <ul class="list-none m-0 flex flex-col">
+          <hr />
+          @for (notification of notifications; track $index) {
+          <li
+            class="flex items-center gap-2 px-2 py-3 hover:bg-gray-100 cursor-pointer rounded-border"
+            (onClick)="selectNotification(notification)"
+          >
+            <div>
+              <span class="font-medium">{{ notification.title }}</span>
+            </div>
+          </li>
+          <hr />
+          }
+        </ul>
+      </div>
+    </div>
+  </ng-template>
+</p-overlayPanel>

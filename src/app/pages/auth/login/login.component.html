@@ -1,0 +1,77 @@
+<section class="auth d-flex">
+  <div class="auth-left bg-main-50 flex-center p-24">
+    <img src="assets/images/logo/logo2.png" alt="" />
+  </div>
+  <div class="auth-right py-40 px-24 flex-center flex-column">
+    <div class="auth-right__inner mx-auto w-100">
+      <div class="text-center"><h2 class="mb-8">S'identifier</h2></div>
+      <form action="#">
+        <div class="mb-24">
+          <label for="fname" class="form-label mb-8 h6"
+            >Email ou Idenfiant</label
+          >
+          <div class="position-relative">
+            <input
+              type="text"
+              class="form-control py-11 ps-40"
+              id="fname"
+              placeholder="Saisir le mail ou l'idenfiant"
+            />
+            <span
+              class="position-absolute top-50 translate-middle-y ms-16 text-gray-600 d-flex"
+              ><i class="ph ph-user"></i
+            ></span>
+          </div>
+        </div>
+        <div class="mb-24">
+          <label for="current-password" class="form-label mb-8 h6"
+            >Mot de passe</label
+          >
+          <div class="position-relative">
+            <input
+              type="password"
+              class="form-control py-11 ps-40"
+              id="current-password"
+              placeholder="Saisir le mot de passe"
+              value="password"
+            />
+            <span
+              class="toggle-password position-absolute top-50 inset-inline-end-0 me-16 translate-middle-y ph ph-eye-slash"
+              id="#current-password"
+            ></span>
+            <span
+              class="position-absolute top-50 translate-middle-y ms-16 text-gray-600 d-flex"
+              ><i class="ph ph-lock"></i
+            ></span>
+          </div>
+        </div>
+        <div class="mb-32 flex-between flex-wrap gap-8">
+          <div class="form-check mb-0 flex-shrink-0">
+            <input
+              class="form-check-input flex-shrink-0 rounded-4"
+              type="checkbox"
+              value=""
+              id="remember"
+            />
+            <label class="form-check-label text-15 flex-grow-1" for="remember"
+              >Se souvenir de moi
+            </label>
+          </div>
+          <a
+            routerLink="/forgot-password"
+            class="text-main-600 hover-text-decoration-underline text-15 fw-medium"
+            >Mot de passe oublié ?</a
+          >
+        </div>
+        <div class="text-center">
+          <p-button
+            class="w-100"
+            label="Connexion"
+            iconPos="right"
+            (click)="login()"
+          />
+        </div>
+      </form>
+    </div>
+  </div>
+</section>

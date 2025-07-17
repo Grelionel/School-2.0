@@ -1,0 +1,19 @@
+.close {
+  display: none;
+  padding: 10px;
+  position: relative;
+
+  i {
+    position: absolute;
+    right: 0;
+    padding: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+  }
+}
+
+.nav .nav-secondary {
+  transition: all 0.3s;
+}

@@ -1,0 +1,80 @@
+<section class="auth d-flex">
+  <div class="auth-left bg-main-50 flex-center p-24">
+    <img src="assets/images/logo/logo2.png" alt="" />
+  </div>
+  <div class="auth-right py-40 px-24 flex-center flex-column">
+    <div class="auth-right__inner mx-auto w-100">
+      <div class="text-center">
+        <h2 class="mb-8">Activation du compte</h2>
+      </div>
+      <form action="#">
+        <div class="mb-24">
+          <label for="new-password" class="form-label mb-8 h6"
+            >Nouveau mot de passe</label
+          >
+          <div class="position-relative">
+            <input
+              [type]="showNewPassword ? 'text' : 'password'"
+              class="form-control py-11 ps-40"
+              id="new-password"
+              placeholder="Enter New Password"
+              [(ngModel)]="newPassword"
+              name="new-password"
+              required
+              (ngModelChange)="onPasswordChange()"
+            />
+            <span
+              class="position-absolute top-50 translate-middle-y ms-16 text-gray-600 d-flex"
+              ><i class="ph ph-lock"></i
+            ></span>
+            <span
+              class="toggle-password position-absolute top-50 inset-inline-end-0 me-16 translate-middle-y cursor-pointer"
+              [ngClass]="showNewPassword ? 'ph ph-eye' : 'ph ph-eye-slash'"
+              (click)="togglePassword('new')"
+            ></span>
+          </div>
+        </div>
+        <div class="mb-24">
+          <label for="confirm-password" class="form-label mb-8 h6"
+            >Confirmer le mot de passe</label
+          >
+          <div class="position-relative">
+            <input
+              [type]="showConfirmPassword ? 'text' : 'password'"
+              class="form-control py-11 ps-40"
+              id="confirm-password"
+              placeholder="Enter Confirm Password"
+              [(ngModel)]="confirmPassword"
+              name="confirm-password"
+              required
+              (ngModelChange)="onPasswordChange()"
+            />
+            <span
+              class="position-absolute top-50 translate-middle-y ms-16 text-gray-600 d-flex"
+              ><i class="ph ph-lock"></i
+            ></span>
+            <span
+              class="toggle-password position-absolute top-50 inset-inline-end-0 me-16 translate-middle-y cursor-pointer"
+              [ngClass]="showConfirmPassword ? 'ph ph-eye' : 'ph ph-eye-slash'"
+              (click)="togglePassword('confirm')"
+            ></span>
+          </div>
+          <div *ngIf="passwordMismatch" class="text-danger text-center mt-8">
+            <i>Les mots de passe ne correspondent pas.</i>
+          </div>
+        </div>
+        <div class="text-center">
+          <p-button
+            class="w-100"
+            label="Enregistrer"
+            iconPos="left"
+            icon="fas fa-save"
+            (click)="save()"
+            [disabled]="!newPassword || !confirmPassword || passwordMismatch"
+          />
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+<app-loading [loadingMessage]="'Traitement en cours'"></app-loading>
